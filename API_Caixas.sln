@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Caixas", "API_Caixas\API_Caixas.csproj", "{BFE47AF6-DAC9-48E2-AB8C-FD65CC5A9D1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFE47AF6-DAC9-48E2-AB8C-FD65CC5A9D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE47AF6-DAC9-48E2-AB8C-FD65CC5A9D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE47AF6-DAC9-48E2-AB8C-FD65CC5A9D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE47AF6-DAC9-48E2-AB8C-FD65CC5A9D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03182E4C-DF44-43DB-A05C-19099AB937EE}
+	EndGlobalSection
+EndGlobal
