@@ -4,73 +4,6 @@ using System.Text.Json;
 
 namespace API_Caixas.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
-    //public class PedidoController : ControllerBase
-    //{
-    //    [HttpPost]
-    //    public IActionResult ReceberPedidos([FromBody] List<PedidosCab> pedidos)
-    //    {
-    //        if (pedidos == null || pedidos.Count == 0)
-    //        {
-    //            return BadRequest("Pedidos inválidos.");
-    //        }
-
-    //        var resultado = new List<RespostaPedido>();
-
-    //        foreach(var pedidosSub in pedidos)
-    //        {
-    //            foreach (var pedido in pedidosSub.pedidos)
-    //            {
-    //                var caixas = ProcessarPedido(pedido);
-    //                string produtos = string.Empty;
-    //                foreach (var produto in pedido.Produtos)
-    //                {
-    //                    produtos = produto.produto_id;
-    //                }
-
-    //                resultado.Add(new RespostaPedido
-    //                {
-    //                    pedido_id = pedido.pedido_id,
-    //                    Caixas = caixas.Select((c, index) => new CaixaResposta
-    //                    {
-    //                        caixa_id = "Caixa " + index + 1,
-    //                        produtos = produtos
-    //                    }).ToList()
-    //                });
-    //            }
-
-    //        }
-
-    //        return Ok(resultado);
-    //    }
-
-    //    private List<Caixa> ProcessarPedido(Pedido pedido)
-    //    {
-    //        // Implementação básica de empacotamento
-    //        List<Caixa> caixas = new List<Caixa>();
-    //        Caixa caixaAtual = new Caixa();
-    //        foreach (var produto in pedido.Produtos)
-    //        {
-    //            if (caixaAtual.PodeAdicionarProduto(produto))
-    //            {
-    //                caixaAtual.Produtos.Add(produto);
-    //            }
-    //            else
-    //            {
-    //                caixas.Add(caixaAtual);
-    //                caixaAtual = new Caixa();
-    //                caixaAtual.Produtos.Add(produto);
-    //            }
-    //        }
-    //        if (caixaAtual.Produtos.Count > 0)
-    //        {
-    //            caixas.Add(caixaAtual);
-    //        }
-    //        return caixas;
-    //    }
-    //}
-
     [Route("api/[controller]")]
     [ApiController]
     public class PedidoController : ControllerBase
@@ -98,12 +31,10 @@ namespace API_Caixas.Controllers
                 foreach (var pedido in pedidosSub.pedidos)
                 {
                     var caixas = ProcessarPedido(pedido);
-                    List<ProdutoResposta> produtoRespostas = new List<ProdutoResposta>();
+                    List<string> produtosResposta = new List<string>();
                     foreach (var produto in pedido.Produtos)
                     {
-                        ProdutoResposta produtoResposta = new ProdutoResposta();
-                        produtoResposta.produto_id = produto.produto_id;
-                        produtoRespostas.Add(produtoResposta);
+                        produtosResposta.Add(produto.produto_id);
                     }
                     resultado.Add(new RespostaPedido
                     {
@@ -111,7 +42,7 @@ namespace API_Caixas.Controllers
                         Caixas = caixas.Select((c, index) => new CaixaResposta
                         {
                             caixa_id = "Caixa " + index + 1,
-                            produtos = produtoRespostas
+                            produtos = produtosResposta
                         }).ToList()
                     });
                 }
@@ -231,13 +162,7 @@ namespace API_Caixas.Controllers
         public string caixa_id { get; set; }
 
         [JsonProperty("produtos")]
-        public List<ProdutoResposta> produtos { get; set; }
+        public List<String> produtos { get; set; }
     }
 
-    public class ProdutoResposta
-    {
-        [JsonProperty("produto_id")]
-        public string produto_id { get; set; }
-
-    }
 }
